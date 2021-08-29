@@ -1,19 +1,18 @@
-﻿@model Hand[]
+﻿@model Drill
 
 <div class="text-center">
     <h1 class="display-4">Equity Trainer</h1>
     <p>What is the equity of the first hand against the second?</p>
     
     <div class="drill">
-        @foreach (var hand in Model)
+        @foreach (var hand in Model.Hands)
         {
             <div class="hand">
                 <img class="card box-shadow" src="~/images/@(hand.CardOne.Id).svg" alt="@(hand.CardOne.Id)" asp-append-version="true"/>
                 <img class="card box-shadow" src="~/images/@(hand.CardTwo.Id).svg" alt="@(hand.CardTwo.Id)" asp-append-version="true"/>
             </div>
         }
-
-
+    <p>@Model.Result.ToString()</p>
     </div>
     <form asp-action="Guess" method="post">
         <input type="range" name="guess" value="50" step="5" oninput="outputUpdate(value)" />

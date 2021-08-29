@@ -9,15 +9,22 @@ namespace PokerEstimations.Models
     public class Drill
     {
         private readonly DeckService _deckService;
-        public Hand[] hands { get; }
-        public double result { get; }
+        public Hand[] Hands { get; }
+        public double Result { get; }
+        public double Guess { get; set; }
 
         public Drill(DeckService deckService)
         {
             _deckService = deckService;
-            hands = _deckService.Deal(2);
+            Hands = _deckService.Deal(2);
+            var pocketCards = new string[Hands.Length];
+            for (int i = 0; i < Hands.Length; i++)
+            {
+                pocketCards[i] = Hands[i].GetCardIds();
+            }
 
-
+            var calculateEquitySerice = new CalculateEquityService();
+            Result = calculateEquitySerice.CalculateEquity(pocketCards)[0];
         }
 
 

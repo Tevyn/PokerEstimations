@@ -23,7 +23,7 @@ namespace PokerEstimations.Controllers
         {
             //Dependency injection here 
             var deckService = new DeckService();
-            var model = deckService.Deal(2);
+            var model = new Drill(deckService);
             return View(model);
         }
 
