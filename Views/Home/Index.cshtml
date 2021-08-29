@@ -14,7 +14,7 @@
         }
     <p>@Model.Result.ToString()</p>
     </div>
-    <form asp-action="Guess" method="post">
+    <form method="post">
         <input type="range" name="guess" value="50" step="5" oninput="outputUpdate(value)" />
         <output for="guess" id="displayguess">50</output>
         <button>Guess</button>
