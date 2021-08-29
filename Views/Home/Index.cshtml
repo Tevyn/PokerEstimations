@@ -1,0 +1,25 @@
+﻿@model Hand[]
+
+<div class="text-center">
+    <h1 class="display-4">Equity Trainer</h1>
+    <p>What is the equity of the first hand against the second?</p>
+    
+    <div class="drill">
+        @foreach (var hand in Model)
+        {
+            <div class="hand">
+                <img class="card box-shadow" src="~/images/@(hand.CardOne.Id).svg" alt="@(hand.CardOne.Id)" asp-append-version="true"/>
+                <img class="card box-shadow" src="~/images/@(hand.CardTwo.Id).svg" alt="@(hand.CardTwo.Id)" asp-append-version="true"/>
+            </div>
+        }
+
+
+    </div>
+    <form asp-action="Guess" method="post">
+        <input type="range" name="guess" value="50" step="5" oninput="outputUpdate(value)" />
+        <output for="guess" id="displayguess">50</output>
+        <button>Guess</button>
+    </form>
+
+
+</div>
